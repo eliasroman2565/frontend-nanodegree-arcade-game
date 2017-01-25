@@ -33,7 +33,7 @@ var player = function(x, y) {
   this.sprite = 'images/char-boy.png';
 };
 
-player.update = function(dt) {
+player.update = function() {
   this.x = this.x;
   this.y = this.y;
 };
