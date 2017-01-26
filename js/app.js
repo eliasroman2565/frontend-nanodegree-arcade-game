@@ -38,32 +38,32 @@ var Player = function(x, y, speed) {
   this.sprite = 'images/char-boy.png'
 };
 
+Player.prototype.reset = function() {
+  this.x = 303;
+  this.y = 303;
+}
+
 Player.prototype.update = function(dt) {
   this.x = this.x;
   this.y = this.y;
 
   if ( this.x > 505){
-    this.x = 303;
-    this.y = 303;
+    player.reset();
   };
   if (this.x < 0) {
-    this.x = 303;
-    this.y = 303;
+    player.reset();
   };
   if (this.y > 450) {
-    this.x = 303;
-    this.y = 303;
+    player.reset();
   };
   if (this.y < 0) {
-    this.x = 303;
-    this.y = 303;
+    player.reset();
     alert("You Win, Bitch");
   };
 
   if (this.x + charHeight + charWidth == Enemy.x + charHeight + charWidth &&
       this.y + charHeight + charWidth == Enemy.y + charHeight + charWidth) {
-        this.x = 303;
-        this.y = 303;
+        player.reset();
       };
 
 };
@@ -100,7 +100,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(0, 41.5, 1), new Enemy(0, 124.5, 5), new Enemy(0, 207.5, 3)];
 
-var player = new Player(303, 303, 75);
+var player = new Player(303, 303, 70);
 
 
 // This listens for key presses and sends the keys to your
