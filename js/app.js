@@ -67,6 +67,20 @@ Player.prototype.update = function(dt) {
       player.reset();
       console.log("collision");
     };
+    if (player.x < allEnemies[0].x + 50 &&
+    player.x  > allEnemies[0].x  &&
+    player.y < allEnemies[0].y + 50 &&
+    player.y  > allEnemies[0].y) {
+      player.reset();
+      console.log("collision");
+    };
+    if (player.x < allEnemies[2].x + 50 &&
+    player.x  > allEnemies[2].x  &&
+    player.y < allEnemies[2].y + 50 &&
+    player.y  > allEnemies[2].y) {
+      player.reset();
+      console.log("collision");
+    };
 
 };
 
