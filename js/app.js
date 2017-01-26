@@ -1,8 +1,8 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
-
-    this.x = x;
-    this.y = y;
+var Enemy = function(x, y, speed) {
+  this.x = x;
+  this.y = y;
+  this.speed = speed;
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -10,15 +10,20 @@ var Enemy = function(x, y) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
+var charWidth = 171;
+var charHeight = 101;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    this.x = this.x + 101
-    this.y = 101
+  this.x = this.x + 101 * dt;
+  this.x = this.x + this.speed;
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x > 505) {
+      this.x = 0;
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -26,50 +31,76 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var player = function(x, y) {
+var Player = function(x, y, speed) {
   this.x = x;
   this.y = y;
-
-  this.sprite = 'images/char-boy.png';
+  this.speed = speed;
+  this.sprite = 'images/char-boy.png'
 };
 
-player.update = function() {
+Player.prototype.update = function(dt) {
   this.x = this.x;
   this.y = this.y;
+
+  if ( this.x > 505){
+    this.x = 303;
+    this.y = 303;
+  };
+  if (this.x < 0) {
+    this.x = 303;
+    this.y = 303;
+  };
+  if (this.y > 450) {
+    this.x = 303;
+    this.y = 303;
+  };
+  if (this.y < 0) {
+    this.x = 303;
+    this.y = 303;
+    alert("You Win, Bitch");
+  };
+
+  if (this.x + charHeight + charWidth == Enemy.x + charHeight + charWidth &&
+      this.y + charHeight + charWidth == Enemy.y + charHeight + charWidth) {
+        this.x = 303;
+        this.y = 303;
+      };
+
 };
 
-player.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+Player.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-player.handleInput = function(dir) {
-
-  if (dir == 'up') {
-    this.y = this.y - 101;
-  }
-  if (dir == 'left') {
-    this.x = this.x - 101;
-  }
-  if (dir == 'right') {
-    this.x = this.x + 101;
-  }
-  if (dir == 'down') {
-    this.y = this.y + 101;
-  }
+Player.prototype.handleInput = function(keyPress) {
+    if (keyPress == 'left') {
+        player.x -= player.speed;
+    }
+    if (keyPress == 'up') {
+        player.y -= player.speed - 20;
+    }
+    if (keyPress == 'right') {
+        player.x += player.speed;
+    }
+    if (keyPress == 'down') {
+        player.y += player.speed - 20;
+    }
+    console.log('keyPress is: ' + keyPress);
 };
-
 
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var allEnemies = [];
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+var allEnemies = [new Enemy(0, 41.5, 1), new Enemy(0, 124.5, 5), new Enemy(0, 207.5, 3)];
 
+var player = new Player(303, 303, 75);
 
 
 // This listens for key presses and sends the keys to your
