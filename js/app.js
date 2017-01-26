@@ -61,27 +61,17 @@ Player.prototype.update = function(dt) {
     alert("You Win, Bitch");
   };
   // Check for Collisions
-  if (player.x < allEnemies[1].x + 50 &&
-    player.x  > allEnemies[1].x  &&
-    player.y < allEnemies[1].y + 50 &&
-    player.y  > allEnemies[1].y) {
+
+allEnemies.forEach(function(Enemy){
+    if (player.x < Enemy.x + 50 &&
+    player.x  > Enemy.x  &&
+    player.y < Enemy.y + 50 &&
+    player.y  > Enemy.y) {
       player.reset();
       console.log("collision");
     };
-    if (player.x < allEnemies[0].x + 50 &&
-    player.x  > allEnemies[0].x  &&
-    player.y < allEnemies[0].y + 50 &&
-    player.y  > allEnemies[0].y) {
-      player.reset();
-      console.log("collision");
-    };
-    if (player.x < allEnemies[2].x + 50 &&
-    player.x  > allEnemies[2].x  &&
-    player.y < allEnemies[2].y + 50 &&
-    player.y  > allEnemies[2].y) {
-      player.reset();
-      console.log("collision");
-    };
+
+    });
 
 };
 // Draw Player on Canvas
