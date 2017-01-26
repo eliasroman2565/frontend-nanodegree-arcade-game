@@ -45,7 +45,7 @@ Player.prototype.update = function(dt) {
     this.x = this.x;
     this.y = this.y;
     // Check if player goes off map
-    if (this.x > 505) {
+    if (this.x > 450) {
         this.reset();
     }
     if (this.x < 0) {
