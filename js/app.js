@@ -46,21 +46,20 @@ Player.prototype.update = function(dt) {
     this.y = this.y;
     // Check if player goes off map
     if (this.x > 505) {
-        player.reset();
+        this.reset();
     }
     if (this.x < 0) {
-        player.reset();
+        this.reset();
     }
     if (this.y > 450) {
-        player.reset();
+        this.reset();
     }
     if (this.y < 0) {
-        player.reset();
-        alert("You Win, Bitch");
+        this.reset();
+        alert("You Win, Good Job!");
     }
 
     // Check for Collisions
-
     allEnemies.forEach(function(Enemy) {
         if (player.x < Enemy.x + 50 &&
             player.x > Enemy.x &&
@@ -68,11 +67,12 @@ Player.prototype.update = function(dt) {
             player.y > Enemy.y) {
             player.reset();
             console.log("collision");
-        }
+        };
 
     });
 
 };
+
 // Draw Player on Canvas
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -80,16 +80,16 @@ Player.prototype.render = function() {
 //Function for Player Controls
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left') {
-        player.x -= player.speed;
+        this.x -= this.speed;
     }
     if (keyPress == 'up') {
-        player.y -= player.speed - 20;
+        this.y -= this.speed - 18;
     }
     if (keyPress == 'right') {
-        player.x += player.speed;
+        this.x += this.speed;
     }
     if (keyPress == 'down') {
-        player.y += player.speed - 20;
+        this.y += this.speed - 18;
     }
     console.log('keyPress is: ' + keyPress);
 };
