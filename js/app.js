@@ -30,14 +30,14 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+// Define Player Class
 var Player = function(x, y, speed) {
   this.x = x;
   this.y = y;
   this.speed = speed;
   this.sprite = 'images/char-boy.png'
 };
-
+// Rest Function back to starting position
 Player.prototype.reset = function() {
   this.x = 303;
   this.y = 303;
@@ -46,7 +46,7 @@ Player.prototype.reset = function() {
 Player.prototype.update = function(dt) {
   this.x = this.x;
   this.y = this.y;
-
+// Check if player goes off map
   if ( this.x > 505){
     player.reset();
   };
@@ -60,6 +60,7 @@ Player.prototype.update = function(dt) {
     player.reset();
     alert("You Win, Bitch");
   };
+  // Check for Collisions
   if (player.x < allEnemies[1].x + 50 &&
     player.x  > allEnemies[1].x  &&
     player.y < allEnemies[1].y + 50 &&
@@ -83,11 +84,11 @@ Player.prototype.update = function(dt) {
     };
 
 };
-
+// Draw Player on Canvas
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+//Function for Player Controls
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left') {
         player.x -= player.speed;
@@ -114,7 +115,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(0, 41.5, 1), new Enemy(0, 124.5, 5), new Enemy(0, 207.5, 3)];
-
+// Player Variable
 var player = new Player(303, 303, 101);
 
 
