@@ -60,14 +60,15 @@ Player.prototype.update = function(dt) {
     player.reset();
     alert("You Win, Bitch");
   };
-
-  if (this.x + charHeight + charWidth == Enemy.x + charHeight + charWidth &&
-      this.y + charHeight + charWidth == Enemy.y + charHeight + charWidth) {
-        player.reset();
-      };
+  if (player.x < allEnemies[1].x + 50 &&
+    player.x  > allEnemies[1].x  &&
+    player.y < allEnemies[1].y + 50 &&
+    player.y  > allEnemies[1].y) {
+      player.reset();
+      console.log("collision");
+    };
 
 };
-
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -100,7 +101,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(0, 41.5, 1), new Enemy(0, 124.5, 5), new Enemy(0, 207.5, 3)];
 
-var player = new Player(303, 303, 70);
+var player = new Player(303, 303, 101);
 
 
 // This listens for key presses and sends the keys to your
