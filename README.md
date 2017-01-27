@@ -1,7 +1,7 @@
 #Front-End Nanodegree Arcade Game Clone
 
 ###Installation
-1. Download zip file from GitHub
+1. Download zip file from https://github.com/eliasroman2565/frontend-nanodegree-arcade-game-Elias
 2. Unzip Folder
 3. Double click on the index.html file
 4. Enjoy!
