@@ -7,7 +7,7 @@
 4. Enjoy!
 
 ###How to win
-Race accros the road into the water with out colliding with the bugs in order to win. If you win, an alert box will pop up stating so.
+Race across the road into the water with out colliding with the bugs in order to win. If you win, an alert box will pop up stating so.
 
 ###Controls
 The "Up" arrow will move the character up the map.
