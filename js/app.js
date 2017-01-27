@@ -59,13 +59,14 @@ Player.prototype.update = function(dt) {
         alert("You Win, Good Job!");
     }
 
+    self = this;
     // Check for Collisions
     allEnemies.forEach(function(Enemy) {
-        if (player.x < Enemy.x + 50 &&
-            player.x > Enemy.x &&
-            player.y < Enemy.y + 50 &&
-            player.y > Enemy.y) {
-            player.reset();
+        if (self.x < Enemy.x + 50 &&
+            self.x > Enemy.x &&
+            self.y < Enemy.y + 50 &&
+            self.y > Enemy.y) {
+            self.reset();
             console.log("collision");
         };
 
